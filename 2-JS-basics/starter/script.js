@@ -54,6 +54,8 @@ console.log(firstName + ' ' + lastName );
  *Basic Operators
  * 
  */
+
+/*
 var now, ageMark, ageJohn;
 now = 2019;
 ageJohn = 33;
@@ -100,3 +102,97 @@ console.log(x); //18
 
 x -= 3;
 console.log(x); //15
+*/
+
+
+
+
+
+
+
+
+/*****************************
+* CODING CHALLENGE 1
+******************************/
+
+/*
+Mark and John are trying to compare their BMI (Body Mass Index), which is calculated using the formula: BMI = mass / height^2 = mass / (height * height). (mass in kg and height in meter).
+
+1. Store Mark's and John's mass and height in variables
+2. Calculate both their BMIs
+3. Create a boolean variable containing information about whether Mark has a higher BMI than John.
+4. Print a string to the console containing the variable from step 3. (Something like "Is Mark's BMI higher than John's? true"). 
+
+GOOD LUCK 😀
+*/
+
+/*
+var markMass = 90;
+var markHeight = 1.98;
+var bmiMark = markMass / (markHeight * markHeight);
+var johnMass = 78;
+var johnHeight = 1.76;
+var bmiJohn = johnMass / (johnHeight * johnHeight);
+
+console.log(bmiMark);
+console.log(bmiJohn);
+var bmiComparisson = bmiMark > bmiJohn;
+console.log('Is mark\'s bmi higher than john\'s bmi? ' + bmiComparisson);
+*/
+
+
+/**************************/
+
+
+
+/*****
+ * IF / ELSE STATEMENTS
+ */  
+
+/*
+ var isMarried = 'yes';
+if(isMarried === 'yes') {
+    console.log('John is married.');
+} else {
+    console.log('John isn\'t married yet');
+}
+
+var isMarried = false;
+
+if(isMarried) {
+    console.log('John is married.');
+} else {
+    console.log('John isn\'t married yet');
+}
+*/
+
+/***************************** OTHER SOLUTION FOR THE CHALLENGE **********************/
+/*
+var markMass = 90;
+var markHeight = 1.98;
+var bmiMark = markMass / (markHeight * markHeight);
+var johnMass = 78;
+var johnHeight = 1.76;
+var bmiJohn = johnMass / (johnHeight * johnHeight);
+
+if(bmiMark > bmiJohn){
+    console.log('Mark has a higher BMI than John');
+} else {
+    console.log('John has a higher BMI than Mark');
+}
+*/
+
+/********* BOOLEAN LOGIC ************/
+
+var name = 'John';
+var age = 32;
+
+if(age < 13) {
+    console.log('John is a boy.');
+} else if ( age >= 13 && age < 18 ) {
+    console.log('John is a teenager.')
+} else if ( age >= 18 && age < 30) {
+    console.log("John is a young man.");
+} else {
+    console.log('John is a man.');
+}
