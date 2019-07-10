@@ -77,3 +77,26 @@ console.log(typeof 'Eu sou lindo, mentira sou não'); //string
 
 var x;
 console.log(typeof x); //undefined
+
+//operators
+var x,y;
+
+x = 3;
+y = 5;
+x = x + y;
+console.log(x); //8
+
+x += y;
+console.log(x); //13
+
+x += 5;
+console.log(x); //18
+
+x++;
+console.log(x); //19
+
+x--;
+console.log(x); //18
+
+x -= 3;
+console.log(x); //15
