@@ -203,8 +203,10 @@ if(age < 13) {
 
 /******************** Ternary Operator *****************/
 
+/*
 var age = 31;
 var name = 'John';
+*/
 
 /*traditional way*/
 // if(age >= 18) {
@@ -213,10 +215,12 @@ var name = 'John';
 //     var drink = 'Juice';
 // }
 
+/*
 var drink = age >= 18 ? 'beer' : 'juice';
 console.log(drink);
 
 /******************** SWITCH ****************/
+/*
 console.log(age);
 
 switch(true) { //o switch checa a veracidade das informações nos seus cases, se for true ele executa o case.
@@ -235,6 +239,7 @@ switch(true) { //o switch checa a veracidade das informações nos seus cases, s
     default:
         console.log('valor incorreto.');
 }
+*/
 
 /************************ Truthy and Falsy values ************************/
 
@@ -246,11 +251,14 @@ switch(true) { //o switch checa a veracidade das informações nos seus cases, s
 
 /************* Equality operators **************/
 
+/*
 var num = '20';
 
 num == 20 ? console.log('Yes') : console.log('No'); // desta maneira o JS faz a conversão e só testa se os valores são iguais
 
 num === 20 ? console.log('Yes') : console.log('No'); //desta maneira o JS tbm testa os tipos
+
+*/
 
 /*****************************
 * CODING CHALLENGE 2
@@ -465,7 +473,5 @@ function tipCalculator(bill1, bill2, bill3) {
     amount.push(tips[2] + bill3);
 
     console.log(tips);
-    console.log(amount);
-
-    
+    console.log(amount);    
 }
