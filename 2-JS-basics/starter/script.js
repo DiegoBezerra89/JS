@@ -432,7 +432,9 @@ In the end, John would like to have 2 arrays:
 GOOD LUCK 😀
 */
 
-function tipCalculator(bill1, bill2, bill3) {
+
+// first solution
+/*function tipCalculator(bill1, bill2, bill3) {
     var amount = [];
     var tips = [];
     switch(true) {
@@ -475,3 +477,147 @@ function tipCalculator(bill1, bill2, bill3) {
     console.log(tips);
     console.log(amount);    
 }
+tipCalculator(124, 48, 268);
+*/
+
+
+//second solution
+/*
+function tipCalculator(bill) {
+  var percentage;
+  if(percentage < 50){
+      percentage = .2;
+  } else if (percentage >= 50 && percentage < 200) {
+    percentage = .15;
+  } else {
+      percentage = .1;
+  }
+  return bill * percentage;
+}
+
+var bills = [124, 48, 268];
+var tips = [tipCalculator(bills[0]),
+            tipCalculator(bills[1]),
+            tipCalculator(bills[2])];
+var finalValues = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
+console.log(bills);
+console.log(tips);
+console.log(finalValues);
+*/
+
+
+
+
+/************************************************* */
+/*********** OBJECTS AND PROPERTIES ***************/
+
+/*
+var john = {
+    name: 'John',
+    lastName: 'Smith',
+    birthYear: '1989',
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false
+};
+
+//print the object
+console.log(john.birthYear);//1989
+console.log(john['birthYear']);//1989
+var x = 'birthYear';
+console.log(john[x]);//1989
+
+//mutate
+john.job = 'Designer';
+john['isMarried'] = true;
+console.log(john);
+console.log(john.job);//designer
+
+var jane = new Object();
+jane.name = 'Jane';
+jane.birthYear = 2001;
+jane['lastName'];
+console.log(jane);
+
+*/
+
+/**************************
+ * 
+ * 
+ * OBJECTS AND METHODS
+ * 
+ * 
+ ***************************/
+
+/*
+var john = {
+    name: 'John',
+    lastName: 'Smith',
+    birthYear: '1989',
+    family: ['Jane', 'Mark', 'Bob', 'Emily'],
+    job: 'teacher',
+    isMarried: false,
+    calcAge: function() { //this function creates an age propertie
+        this.age = 2018 - this.birthYear;//this reffers the objects properties
+    }
+};
+
+john.calcAge();
+console.log(john);
+*/
+
+
+/************************* 
+ * 
+ * CODING CHALLENGE 4
+ * 
+ *************************/
+
+/*
+
+Let's remember the first coding challenge where Mark and John compared their BMIs. Let's now implement the same functionality with objects and methods.
+1. For each of them, create an object with properties for their full name, mass, and height
+2. Then, add a method to each object to calculate the BMI. Save the BMI to the object and also return it from the method.
+3. In the end, log to the console who has the highest BMI, together with the full name and the respective BMI. Don't forget they might have the same BMI.
+
+Remember: BMI = mass / height^2 = mass / (height * height). (mass in kg and height in meter).
+
+GOOD LUCK 😀
+
+*/
+
+var john = {
+    fullName: 'John Wick',
+    mass: '89',
+    height:  '1.73',
+    calcBmi: function() {
+        this.bmi = (this.mass) / (this.height ^ 2);
+    }
+};
+
+john.calcBmi();
+console.log(john);
+
+var mark = {
+    fullName: 'Mark Johnson',
+    mass: '89',
+    height:  '1.73',
+    calcBmi: function() {
+        this.bmi = (this.mass) / (this.height ^ 2);
+    }
+};
+
+mark.calcBmi();
+console.log(mark);
+
+function higherBmi( person1, person2 ) {
+    if(person1.bmi > person2.bmi) {
+        console.log(person1.fullName + ' has the BMI higher than ' + person2.fullName + ', ' + person1.bmi + ' e ' + person2.bmi);
+    } else if(person2.bmi > person1.bmi) {
+        console.log(person2.fullName + ' has the BMI higher than ' + person1.fullName + ', ' + person2.bmi + ' e ' + person1.bmi);
+    } else {
+        console.log('There\'s a DRAW, the both BMI are: ' + person1.bmi);
+    }
+}
+
+higherBmi(john, mark);
