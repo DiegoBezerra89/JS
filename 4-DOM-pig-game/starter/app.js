@@ -1,3 +1,5 @@
+//https://diegobezerra89.github.io/JS/4-DOM-pig-game/starter/index.html
+
 /*
 GAME RULES:
 
