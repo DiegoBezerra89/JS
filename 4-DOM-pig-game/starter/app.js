@@ -11,4 +11,4 @@ GAME RULES:
 
 */
 
-
+document.querySelector('.dice').style.display = 'none';
