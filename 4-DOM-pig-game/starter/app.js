@@ -32,7 +32,7 @@ document.querySelector('.btn-roll').addEventListener('click', function(){
     diceDOM.src = 'dice-' + dice + '.png';
     if(dice !== 1){
         roundScore += dice;
-        dice === 6 ? count += 1 : '';
+        dice === 6 ? count += 1 : ''; //se o dado for 6 o count soma 1
         document.getElementById('current-' + activePlayer).textContent = roundScore;
         loseScore();
     } else { 
@@ -62,8 +62,6 @@ document.querySelector('.btn-new').addEventListener('click', function(){
 //FUNCTIONS
 function newGame() {
     noneDice();
-    roundScore = 0;
-    scores[0,0];
     document.getElementById('score-0').textContent = '0';
     document.getElementById('score-1').textContent = '0';
     document.getElementById('current-0').textContent = '0';
@@ -72,6 +70,8 @@ function newGame() {
     document.querySelector('.btn-roll').style.display = 'block'; 
     document.querySelector('.player-name').style.color = '#555';
     document.getElementById('name-' + activePlayer).textContent = 'Player ' + (activePlayer + 1);
+    document.getElementById('name-' + activePlayer).classList.remove('winner');
+    init();
 }
 
 function nextPlayer() {
@@ -85,9 +85,10 @@ function nextPlayer() {
 }
 
 function youWon() {
-    if(scores[activePlayer] >= 30) {
+    var winner = inputValue();
+    if(scores[activePlayer] >= winner) {
         document.getElementById('name-' + activePlayer).textContent = 'WINNER!';
-        document.getElementById('name-' + activePlayer).style.color = 'red';
+        document.getElementById('name-' + activePlayer).classList.add('winner');
         document.querySelector('.btn-hold').style.display = 'none';
         document.querySelector('.btn-roll').style.display = 'none';       
     } else {
@@ -118,10 +119,17 @@ Change the game to follow these rules:
 //1. A player looses his ENTIRE score when he rolls two 6 in a row. After that, it's the next player's turn. (Hint: Always save the previous dice roll in a separate variable)
 
 function loseScore() {
-    if(count > 1) {
+    if(count > 1) { //quer dizer q o seis foi tirado duas vezes na mesma rodada
         scores[activePlayer] = 0;
         alert("you have got two times the number 6!");
         document.getElementById('score-' + activePlayer).textContent = '0';
         nextPlayer();
     }
+}
+
+//2. Add an input field to the HTML where players can set the winning score, so that they can change the predefined score of 100. (Hint: you can read that value with the .value property in JavaScript. This is a good oportunity to use google to figure this out :)
+
+function inputValue() {
+    var x = document.getElementById('inputValue').value;
+    return x;
 }
