@@ -206,6 +206,7 @@ function game() {
 game();
 */
 
+/*
 (function() {
     var score = Math.random() * 10;
     console.log(score >= 5);
@@ -216,4 +217,82 @@ game();
 (function(goodLuck) {
     var score = Math.random() * 10;
     console.log(score >= 5 - goodLuck);
-})(5);
+})(5); //true
+*/
+
+/**** Closures ****/
+
+
+function retirement(retirementAge) {
+    var a = ' years left until retirement.';
+    return function(yearOfBirth) {
+        var age = 2019 - yearOfBirth;
+        console.log((retirementAge - age) + a);
+    }
+}
+
+var retirementUS = retirement(66);
+var retirementGermany = retirement(65);
+var retirementIceland =  retirement(67);
+
+retirementUS(1990);
+retirementGermany(1978);
+retirementIceland(1996);
+
+function interviewJob(job) {
+    if(job === 'teacher') {
+        return function(name) {
+            console.log(name + ', what subject do you teach?');
+        }
+    } else if (job === 'Designer') {
+        return function(name) {
+            console.log(name + ', can you explain whats is UX design?');
+        } 
+    } else {
+        return function (name) {
+            console.log(name + ', what do you do?');
+        }
+    }
+}
+
+
+//MY WAY
+function interviewJob(job) {
+    var a = ', what subject do you teach?';
+    var b = ', can you explain whats is UX design?';
+    var c = ', what do you do?';
+    return function(nome) {
+        if(job === 'Teacher'){
+            console.log(nome + a);
+        } else if (job === 'Designer') {
+            console.log(nome + b);
+        } else {
+            console.log(nome + c);
+        }
+    }
+}
+
+var design = interviewJob('Designer');
+var teacher = interviewJob('Teacher');
+var nothing = interviewJob('nothing');
+
+design('Diego');
+teacher('Dunha');
+nothing('Edson');
+
+//JONAS WAY
+function interviewJob(job) {
+    return function(name) {
+        if (job === 'Teacher') {
+            console.log(name + ', what subject do you teach?');
+        } else if (job === 'Designer') {
+            console.log(name + ', can you explain whats is UX design?');
+        } else {
+            console.log(name + ', what do you do?');
+        }
+    }
+}
+
+interviewJob('Teacher')('Dunha');
+interviewJob('Designer')('Diego');
+interviewJob('nothing')('Edson');
