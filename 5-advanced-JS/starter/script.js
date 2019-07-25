@@ -102,6 +102,7 @@
 PASSING FUNCTIONS AS ARGUMENTS
 
 *****************/
+/*
 var years = [1990, 1987, 1964, 2007, 1999];
 
 function arrayCalc (arr, fn) {
@@ -135,6 +136,84 @@ var fullAges = arrayCalc(ages, isFullAge);
 console.log(ages);
 console.log(fullAges);
 //it's a hard concept, so, I'll need to repeat a lot of times the video
+*/
 
 
 
+
+/* FUNCTIONS RETURNING FUNCTIONS */
+
+/*
+function interviewJob(job) {
+    if(job === 'teacher') {
+        return function(name) {
+            console.log(name + ', what subject do you teach?');
+        }
+    } else if (job === 'Designer') {
+        return function(name) {
+            console.log(name + ', can you explain whats is UX design?');
+        } 
+    } else {
+        return function (name) {
+            console.log(name + ', what do you do?');
+        }
+    }
+}
+
+var teacherQuestion = interviewJob('teacher');
+teacherQuestion('Mike'); //Mike, what subject do you teach?
+
+var designQuestion = interviewJob('Designer');
+designQuestion("Diego"); //Diego, can you explain whats is UX design?
+
+var noProfession = interviewJob('Nada');
+noProfession('Edson');
+
+console.log(interviewJob("Dunha")); //returns the function with else condition
+
+interviewJob('teacher')('Michael'); //Michael, what subject do you teach?
+
+function gente(time) {
+    if(time === 'Palmeiras') {
+        return function(nome) {
+            console.log(nome + ' vc é gente!');
+        }
+    } else if (time === 'Santos') {
+        return function(name) {
+            console.log('Mano, ' + time + ' nem é time ' + name);
+        }
+    } else if (time === 'Corinthians') {
+        return function(nome) {
+            console.log('Não, ' + nome + ', vc não é gente.');
+        }
+    }
+
+}
+
+gente('Palmeiras')('Diego');
+gente('Santos')('Bruno');
+gente('Corinthians')('Ivan');
+*/
+
+
+/***** immediately invoked function || IIFE *****/
+
+/*
+function game() {
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+}
+game();
+*/
+
+(function() {
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+})();
+
+//console.log(score); score is not defined, because the IIFE creates a local scope
+
+(function(goodLuck) {
+    var score = Math.random() * 10;
+    console.log(score >= 5 - goodLuck);
+})(5);
