@@ -222,7 +222,7 @@ game();
 
 /**** Closures ****/
 
-
+/*
 function retirement(retirementAge) {
     var a = ' years left until retirement.';
     return function(yearOfBirth) {
@@ -296,3 +296,38 @@ function interviewJob(job) {
 interviewJob('Teacher')('Dunha');
 interviewJob('Designer')('Diego');
 interviewJob('nothing')('Edson');
+*/
+
+var john = {
+    name: 'John',
+    age: 28,
+    job: 'Teacher',
+    presentation: function(style, timeOfDay) {
+        if(style === 'formal') {
+            console.log('Good ' + timeOfDay + ', Ladies and Gentlemen! I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old.');
+        } else if (style === 'friendly') {
+            console.log('Hey what\'s up? I\'m ' + this.name + ', I\'m a ' + this.job + ' and I\'m ' + this.age + ' years old. have a nice ' + timeOfDay + '!' );
+        }
+    } 
+};
+
+john.presentation('formal', 'morning');
+
+var emily = {
+    name: 'Emily',
+    age: 28,
+    job: 'Designer'
+};
+
+john.presentation.call(emily, 'friendly', 'afternoon'); //it borrows the method of john
+
+//john.presentation.apply(emily, ['afternoon', 'friendly']);
+
+var johnFriendly = john.presentation.bind(john, 'friendly');
+
+//johnFriendly turns into a function, which needs a method(timeOfDay)
+johnFriendly('morning');
+
+var emilyFormal = john.presentation.bind(emily, 'formal');
+
+emilyFormal('night');
