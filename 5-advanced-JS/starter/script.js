@@ -393,13 +393,20 @@ function startQuiz(userAsk){
 
 //var answer = prompt(questionArray[quiz].alternatives);
 //answer === questionArray[quiz].correct ? console.log('Certa a resposta!') : console.log('Errado!');
+startQuiz(userAsk);
 
+/*
 var a = '';
+var score = 0;
 
-while(a !== 'exit'){
+function game(){
+    console.log('Vamos brincar de perguntas e respostas: ');
+    while(a !== 'exit'){
+    console.log('Seu score atual é de :' + score);
     a = startQuiz(userAsk);
-};
-
+    };
+}
+*/
 //7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 
 })();
