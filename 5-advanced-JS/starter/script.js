@@ -1,6 +1,6 @@
 //Creating objects and cronstructors
 
-    /*
+    
     //literal method
     var john = {
         name: 'John',
@@ -32,7 +32,23 @@
     mark.calculateAge();
 
     console.log(mark.lastName);//Smith
-    */
+    
+
+    var Car = function(name, brand, year) {
+        this.name = name;
+        this.brand = brand;
+        this.year = year;
+    }; 
+
+    Car.prototype.inputColor = function(col) {
+        this.color = col;
+    };
+
+    var carro = new Car('Gol', 'volks', 1989);
+
+    carro.inputColor('azul');
+
+    console.log(carro);
 
 
     /*********
@@ -341,15 +357,12 @@ emilyFormal('night');
 
 (function(){
 
-
 /*
 --- Let's build a fun quiz game in the console! ---
-
 1. Build a function constructor called Question to describe a question. A question should include:
 a) question itself
 b) the answers from which the player can choose the correct one (choose an adequate data structure here, array, object, etc.)
 c) correct answer (I would use a number for this)
-
 */
 var Question = function(ask, alternatives, correct) {
     this.ask = ask;
