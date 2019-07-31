@@ -1,6 +1,6 @@
 //Creating objects and cronstructors
 
-    
+    /*
     //literal method
     var john = {
         name: 'John',
@@ -32,8 +32,10 @@
     mark.calculateAge();
 
     console.log(mark.lastName);//Smith
-    
+    */
 
+    /*
+    //TEST
     var Car = function(name, brand, year) {
         this.name = name;
         this.brand = brand;
@@ -49,7 +51,7 @@
     carro.inputColor('azul');
 
     console.log(carro);
-
+    */
 
     /*********
      * 
@@ -73,8 +75,8 @@
         yearOfBirth: { value: 1997 },
         job: { value: 'Designer'}
     });
-
 */
+
 
 /*************** PRIMITIVES VS OBJECTS ***************/
 
@@ -89,7 +91,7 @@
         obj1.age = 30;
         console.log(obj1.age);
         console.log(obj2.age);
-        //was created a reference to obj1 in memory, always which obj1 has change, obj2 changes too.
+        //was created a reference to obj1 in memory, always that obj1 has change, obj2 changes too.
 
         //FUNCTIONS
         var age = 27;
@@ -170,7 +172,7 @@ function interviewJob(job) {
             console.log(name + ', can you explain whats is UX design?');
         } 
     } else {
-        return function (name) {
+        return function(name) {
             console.log(name + ', what do you do?');
         }
     }
@@ -220,9 +222,9 @@ function game() {
     console.log(score >= 5);
 }
 game();
-*/
 
-/*
+
+
 (function() {
     var score = Math.random() * 10;
     console.log(score >= 5);
@@ -236,9 +238,11 @@ game();
 })(5); //true
 */
 
+
+
 /**** Closures ****/
 
-/*
+
 function retirement(retirementAge) {
     var a = ' years left until retirement.';
     return function(yearOfBirth) {
@@ -255,6 +259,7 @@ retirementUS(1990);
 retirementGermany(1978);
 retirementIceland(1996);
 
+/*
 function interviewJob(job) {
     if(job === 'teacher') {
         return function(name) {
@@ -270,8 +275,9 @@ function interviewJob(job) {
         }
     }
 }
+*/
 
-
+/*
 //MY WAY
 function interviewJob(job) {
     var a = ', what subject do you teach?';
