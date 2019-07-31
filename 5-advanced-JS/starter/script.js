@@ -242,7 +242,7 @@ game();
 
 /**** Closures ****/
 
-
+/*
 function retirement(retirementAge) {
     var a = ' years left until retirement.';
     return function(yearOfBirth) {
@@ -258,7 +258,7 @@ var retirementIceland =  retirement(67);
 retirementUS(1990);
 retirementGermany(1978);
 retirementIceland(1996);
-
+*/
 /*
 function interviewJob(job) {
     if(job === 'teacher') {
@@ -357,11 +357,39 @@ emilyFormal('night');
 */
 
 
+/*********************** exercise ************************/
+
+//creating a constructor
+var Person = function(name, age, job) {
+    this.name = name;
+    this.age = age;
+    this.job = job;
+}
+
+Person.prototype.timeQueTorce = function(time) {
+    console.log(this.name + ' torce para o ' + time + '.');
+}
+
+var diego = new Person('Diego', 29, 'Web Developer');
+
+diego.timeQueTorce('Palmeiras');
+
+
+//closure
+function jobInterview(job) {
+    var a = ' works as a ';
+    return function(name) {
+        console.log(name + a + job);
+    }
+}
+
+jobInterview('Teacher')('Ana');
+
 /////////////////////////////
 // CODING CHALLENGE
 
 
-(function(){
+
 
 /*
 --- Let's build a fun quiz game in the console! ---
@@ -370,65 +398,25 @@ a) question itself
 b) the answers from which the player can choose the correct one (choose an adequate data structure here, array, object, etc.)
 c) correct answer (I would use a number for this)
 */
-var Question = function(ask, alternatives, correct) {
-    this.ask = ask;
-    this.alternatives = alternatives;
-    this.correct = correct;
-}
-
 
 //2. Create a couple of questions using the constructor
-var question1 = new Question('Qual é o maior time do Brasil?', ['1 - Palmeiras', '2 - Corinthians', '3 - São Paulo'], '1' );
-var question2 = new Question('Qual é a capital da Itália?',['1 - Milão', '2 - Roma', '3 - Palermo'], '2');
-var question3 = new Question('Como era conhecido o jogador de futebol, Manuel Franscisco do Santos?',['1 - Zetti', '2 - Romário', '3 - Dinei', '4 - Garrincha'], '4');
 
 
 //3. Store them all inside an array
-var questions = [question1, question2, question3];
 
 
 //4. Select one random question and log it on the console, together with the possible answers (each question should have a number) (Hint: write a method for the Question objects for this task).
-function randomQuestion(questionArray) {
-    var quiz = Math.floor(Math.random() * 3);
-    console.log(questionArray[quiz].ask);
-    for(var i = 0; i < questionArray[quiz].alternatives.length; i++){
-        console.log(questionArray[quiz].alternatives[i]);
-    };
-    return questionArray[quiz].correct;
-}
+
 
 //5. Use the 'prompt' function to ask the user for the correct answer. The user should input the number of the correct answer such as you displayed it on Task 4.
-function userAsk() {
-    return prompt('Digite o número correspondente à resposta: ');
-};
+
 
 //6. Check if the answer is correct and print to the console whether the answer is correct ot nor (Hint: write another method for this).
-function startQuiz(userAsk){
-    var correctAnswer = randomQuestion(questions);
-    var answer = userAsk();
-    answer === correctAnswer ? console.log('Certa a resposta!') : console.log('Errado!');
-    return answer;
-};
 
-//var answer = prompt(questionArray[quiz].alternatives);
-//answer === questionArray[quiz].correct ? console.log('Certa a resposta!') : console.log('Errado!');
-startQuiz(userAsk);
 
-/*
-var a = '';
-var score = 0;
-
-function game(){
-    console.log('Vamos brincar de perguntas e respostas: ');
-    while(a !== 'exit'){
-    console.log('Seu score atual é de :' + score);
-    a = startQuiz(userAsk);
-    };
-}
-*/
 //7. Suppose this code would be a plugin for other programmers to use in their code. So make sure that all your code is private and doesn't interfere with the other programmers code (Hint: we learned a special technique to do exactly that).
 
-})();
+
 
 /*
 --- Expert level ---
