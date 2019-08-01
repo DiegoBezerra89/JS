@@ -514,6 +514,7 @@ questions[n].rightQuestion(answer);
             return sc;
         }
     */
+   
 
 
     function nextQuestion() {
