@@ -500,17 +500,25 @@ questions[n].rightQuestion(answer);
         return function(correct) {
             if(correct) {
                 sc++;
+                console.log(sc);
             }
             return sc;
         }
     }
 
-    var keepScore = score();
+    var keepScore = score();//precisa de um argumento "correct"
+    /*function(correct) {
+            if(correct) {
+                sc++;
+            }
+            return sc;
+        }
+    */
+
 
     function nextQuestion() {
         var n = Math.floor(Math.random() * questions.length);
         questions[n].showQuestion(); //random position
-        
         var answer = prompt('Digite a resposta certa:');    
         if(answer !== 'exit'){
             questions[n].rightQuestion(parseInt(answer) , keepScore);
