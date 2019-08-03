@@ -164,3 +164,45 @@ var controller = (function(budgetCtrl, UICtrl){
 controller.init();
 
 
+
+
+
+
+
+
+
+
+
+var budgetController = (function(){
+    //some code
+})();
+
+var UIController = (function(){
+    //some code
+    /*
+    > Get input values
+    > Add the new item to the UI
+    > Update the UI
+    */
+    return {
+        getInput: function() {
+           return{
+            type: document.querySelector('.add__type').value,
+            description: document.querySelector('.add__description').value,
+            value: document.querySelector('.add__value')
+           };
+        }
+    }
+})();
+
+var controller = (function(budgetCtrl, UICtrl){
+    var getInput = UICtrl.getInput();
+
+    document.querySelector('.add__btn').addEventListener('click', getInput);
+    document.addEventListener('keypress', function(event){
+        if(event.which === 13 || event.keyCode === 13){
+            getInput();
+        }
+    });
+
+})(budgetController, UIController);
