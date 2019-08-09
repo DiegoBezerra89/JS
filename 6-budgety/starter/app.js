@@ -32,6 +32,18 @@ CONTROLLER MODULE:
     > Add event handler
     ==============================
 
+===========================
+
+
+============================
+STEP 3: DELETING AN ITEM OF UI AND UPDATE THE BUDGET
+
+    - ADD AN EVENT HANDLER
+    - DELETE THE ITEM FROM OUR DATA STRUCTURE
+    - DELETE THE ITEM TO THE UI
+    - RE-CALCULATE BUDGET
+    - UPDATE THE UI
+=======================================
 */
 //EXAMPLE TO DEMONSTRATE HOW MODULES WORKS
 
