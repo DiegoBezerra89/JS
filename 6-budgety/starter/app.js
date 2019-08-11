@@ -189,7 +189,8 @@ var UIController = (function(){
         budgetLabel: '.budget__value',
         incomeLabel: '.budget__income--value',
         expensesLabel: '.budget__expenses--value',
-        percentageLabel: '.budget__expenses--percentage'
+        percentageLabel: '.budget__expenses--percentage',
+        container: '.container'
     };
     // Get input values
     return {
@@ -259,6 +260,18 @@ var UIController = (function(){
 //############################
 //MAIN CONTROLLER
 var controller = (function(budgetCtrl, UICtrl){
+    var setupEventListeners = function(){ //this takes the values of input fields
+        var DOM = UICtrl.getDOMstrings();
+        document.querySelector(DOM.button).addEventListener('click',ctrlAddItem);
+        document.addEventListener('keypress', function(event){
+            if(event.keyCode === 13 || event.which === 13) {
+                ctrlAddItem();
+            }
+        });
+        document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
+
+    };
+
     var updateBudget = function(){
         // 1. Calculate the budget
         budgetCtrl.calculateBudget();
@@ -293,16 +306,20 @@ var controller = (function(budgetCtrl, UICtrl){
 
         // 6. Display the budget to the UI 
     };
+    
+    var ctrlDeleteItem = function(event) {
+        var itemID, splitId, type, ID;
 
-    var setupEventListeners = function(){ //this takes the values of input fields
-        var DOM = UICtrl.getDOMstrings();
-        document.querySelector(DOM.button).addEventListener('click',ctrlAddItem);
-        document.addEventListener('keypress', function(event){
-            if(event.keyCode === 13 || event.which === 13) {
-                ctrlAddItem();
-            }
-        });
-    }
+        itemID = event.target.parentNode.parentNode.parentNode.parentNode.id;
+        console.log(itemID);
+        if(itemID) {
+            splitID = itemID.split('-');
+            type = splitID[0];
+            ID = splitId[1];
+        }
+
+    };
+
 
     return {
         init: function(){
