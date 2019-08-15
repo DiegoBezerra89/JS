@@ -336,8 +336,32 @@ var UIController = (function(){
                     current.textContent = '---';
                 }
             });
+        },
 
+        fomatNumbers: function(num ,type) {
+            var numSplit, dec, int;
+            /*
+            + or - before number
+            exactly 2 decimal points
+            comma separating the thousands
+            20 = [20,00]
+            20.00
+            2310.4567 -> + 2,310.46
+            2000 -> + 2,000.00
+            */
+           //-20
+            num = Math.abs(num);//20
+            num = num.toFixed(2);//20.00
+            numSplit = num.split('.');//[ 20 , 00 ]                  
+            int = numSplit[0];
+            
+            if(int.length > 3) {
+                int = int.substr(0, int.length - 3) + ',' + int.substr(int.length - 3, 3);
+            }
 
+            dec = numSplit[1];
+
+            return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
         },
 
         getDOMstrings: function(){
