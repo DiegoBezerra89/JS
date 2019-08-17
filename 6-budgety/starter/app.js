@@ -262,7 +262,7 @@ var UIController = (function(){
         expensesPercLabel: '.item__percentage'
     };
 
-    var fomatNumbers = function(num ,type) {
+    var formatNumbers = function(num ,type) {
         var numSplit, dec, int;
         /*
         + or - before number
@@ -312,7 +312,7 @@ var UIController = (function(){
             //Replace the placeholder text with some actual data
             newHtml = html.replace('%id%', obj.id);
             newHtml = newHtml.replace('%description%', obj.description);
-            newHtml = newHtml.replace('%value%', obj.value);
+            newHtml = newHtml.replace('%value%', formatNumbers(obj.value, type));
             //insert the html into the DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
         },
@@ -334,15 +334,19 @@ var UIController = (function(){
         },
 
         displayBudget: function(obj) {
-                document.querySelector(DOMstrings.budgetLabel).textContent = obj.budget;
-                document.querySelector(DOMstrings.incomeLabel).textContent = obj.totalInc;
-                document.querySelector(DOMstrings.expensesLabel).textContent = obj.totalExp;
+            var type;
 
-                if(obj.percentage > 0) {
-                    document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';  
-                } else {
-                    document.querySelector(DOMstrings.percentageLabel).textContent = '---';
-                }
+            obj.budget > 0 ? type = 'inc' : type = 'exp';
+          
+            document.querySelector(DOMstrings.budgetLabel).textContent = formatNumbers(obj.budget, type);
+            document.querySelector(DOMstrings.incomeLabel).textContent = formatNumbers(obj.totalInc, 'inc');
+            document.querySelector(DOMstrings.expensesLabel).textContent = formatNumbers(obj.totalExp, 'exp');
+
+            if(obj.percentage > 0) {
+                document.querySelector(DOMstrings.percentageLabel).textContent = obj.percentage + '%';  
+            } else {
+                document.querySelector(DOMstrings.percentageLabel).textContent = '---';
+            }
         },
 
         displayPercentages: function(percentages) {
