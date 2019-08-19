@@ -288,6 +288,12 @@ var UIController = (function(){
 
         return (type === 'exp' ? '-' : '+') + ' ' + int + '.' + dec;
     };
+
+    var nodeListForEach = function(list, callback) { //this could be used every time when i want to do a ForEach method in a html objects
+        for( var i = 0; i < list.length; i++) {
+            callback(list[i], i);
+        }
+    };
     // Get input values
     return {
         getInput: function(){
@@ -354,12 +360,6 @@ var UIController = (function(){
 
             var fields = document.querySelectorAll(DOMstrings.expensesPercLabel);
 
-            var nodeListForEach = function(list, callback) { //this could be used every time when i want to do a ForEach method in a html objects
-                for( var i = 0; i < list.length; i++) {
-                    callback(list[i], i);
-                }
-            };
-
             nodeListForEach(fields, function(current, index){
                 if(percentages[index] > 0) {
                     current.textContent = percentages[index] + '%';
@@ -372,7 +372,7 @@ var UIController = (function(){
         displayMonth: function() {
             var now, month, year, months;
             now = new Date(); //this returns the current date //Sun Aug 18 2019 20:43:53 GMT-0300 (Horário Padrão de Brasília)
-            
+
             months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
             month = now.getMonth();
             year = now.getFullYear();
@@ -380,10 +380,20 @@ var UIController = (function(){
             document.querySelector(DOMstrings.dateLabel).textContent = months[month] + ' ' + year;
         },
 
+        changedType: function() {
+            var fields = document.querySelectorAll(DOMstrings.type + ',' + DOMstrings.description + ',' + DOMstrings.value);
+
+            nodeListForEach(fields, function(cur){
+                cur.classList.toggle('red-focus');
+            });
+
+            document.querySelector(DOMstrings.button).classList.toggle('red');
+        },
+
         getDOMstrings: function(){
             return DOMstrings;
         }
-    }
+    };
     
     //Update the UI
     
@@ -395,16 +405,21 @@ var UIController = (function(){
 //############################
 //MAIN CONTROLLER
 var controller = (function(budgetCtrl, UICtrl){
+
     var setupEventListeners = function(){ //this takes the values of input fields
         var DOM = UICtrl.getDOMstrings();
+
         document.querySelector(DOM.button).addEventListener('click',ctrlAddItem);
+
         document.addEventListener('keypress', function(event){
             if(event.keyCode === 13 || event.which === 13) {
                 ctrlAddItem();
             }
         });
+
         document.querySelector(DOM.container).addEventListener('click', ctrlDeleteItem);
 
+        document.querySelector(DOM.type).addEventListener('change', UICtrl.changedType);
     };
 
     var updateBudget = function(){
@@ -481,18 +496,18 @@ var controller = (function(budgetCtrl, UICtrl){
 
 
     return {
-        init: function(){
-            setupEventListeners();
-            UICtrl.displayMonth();
+        init: function(){ 
             console.log('Application has started!');
+            UICtrl.displayMonth();
             UICtrl.displayBudget({
                 budget: 0,
                 totalInc: 0,
                 totalExp: 0,
                 percentage: -1
             }); 
+            setupEventListeners();
         }
-    }
+    };
 
 })(budgetController, UIController);
 
