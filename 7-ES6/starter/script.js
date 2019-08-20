@@ -137,6 +137,6 @@ console.log(`This is ${firstName} ${lastName}, he borns in ${yearOfBirth}, and h
 
 const n = `${firstName} ${lastName}`;
 
-console.log(n.startsWith('J'));
+console.log(n.startsWith('J')); //it starts with 'J'? -> true
 
 
