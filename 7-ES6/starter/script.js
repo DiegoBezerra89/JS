@@ -34,7 +34,7 @@ driverLicense5(true);
 
 //ES6
 
-
+/*
 function driverLicense6(haveAge) {
     if (haveAge) {
         let name = 'John';//the name can mutate
@@ -57,7 +57,7 @@ function driverLicense6(haveAge) {
 }
 
 driverLicense6(true);// John was born in 1990, and he can drive.
-
+*/
 
 //for loops with let
 /*
@@ -179,7 +179,6 @@ console.log(ages6);
 
 LEXICAL 'THIS' KEYWORD
 
-*/
 
 //ES5
 var box5 = {
@@ -233,3 +232,46 @@ Person.prototype.myFriends6 = function(friends) {
 };
 
 new Person('Diego').myFriends6(friends);
+*/
+
+/*
+=====================
+    DESTRUCTURING
+=====================
+*/
+
+//ES5
+var john = ['John', 29];
+// var name = john[0];
+// var age = john[1];
+
+//ES6
+const [name , age] = ['John', 29];
+console.log(name);
+console.log(age);
+
+//declaring an object
+const obj = {
+    firstName: 'John',
+    lastName: 'Smith'
+}
+
+//declaring two variables by an object, with the same names of the object properties
+const {firstName , lastName} = obj;
+console.log(firstName);
+console.log(lastName);
+
+//declaring two variables by an object, with different names of the object properties
+const{firstName: a, lastName: b} = obj;
+console.log(a);
+console.log(b);
+
+//a function which returns two values
+function calcAgeRetirement(year) {
+    const age = new Date().getFullYear() - year;
+    return [age, 65 - age];
+}
+
+const [age2, retirement] = calcAgeRetirement(1990);
+console.log(age2);
+console.log(retirement);
