@@ -238,7 +238,7 @@ new Person('Diego').myFriends6(friends);
 =====================
     DESTRUCTURING
 =====================
-*/
+
 
 //ES5
 var john = ['John', 29];
@@ -275,3 +275,105 @@ function calcAgeRetirement(year) {
 const [age2, retirement] = calcAgeRetirement(1990);
 console.log(age2);
 console.log(retirement);
+
+*/
+
+/*
+
+============================
+           ARRAYS
+============================
+
+
+
+//ES5
+const boxes = document.querySelectorAll('.box'); // this creates a node list
+
+//converting this node list to an array
+
+
+var boxArr5 = Array.prototype.slice.call(boxes);
+
+
+boxArr5.forEach(function(cur){
+    cur.style.backgroundColor = 'dodgerblue'
+});
+*/
+
+//ES6
+//this convert a nodelist in an array
+//Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');
+
+
+//====================
+//For loop in arrays
+//ES5
+/*
+for(var i = 0; i < boxArr5.length ; i++ ) {
+    if(boxArr5[i].className === 'box blue') {
+        continue;
+    }
+    boxArr5[i].textContent = 'I changed to blue!';
+};
+*/
+
+//ES6
+/*
+for(const cur of boxArr5) {
+    if(cur.className.includes('blue')){
+        continue;
+    }
+    cur.textContent = 'I changed to blue!';
+}
+*/
+
+
+//==============================
+//NEW ARRAY METHODS
+//===============================
+
+/*
+var ages = [16, 17, 10, 23, 14, 12];
+
+//how to show the full age
+//ES5
+var full = ages.map(function(cur) {
+    return cur >= 18;
+});
+console.log(full);//[false, false, false, true, false, false]
+console.log(full.indexOf(true));//3
+console.log(ages[full.indexOf(true)]);//23
+
+//ES6
+console.log(ages.findIndex(cur => cur >= 18));//3 this find where on the array the condition is true
+console.log(ages.find(cur => cur >= 18));//23 this finds the content of where on the array the condition is true
+*/
+
+
+//passing an array as argument to a fubction
+function sum (a, b , c, d) {
+    return a + b + c + d;
+}
+var sum1 = sum(10, 20, 30, 40);//no array method
+console.log(sum1);
+
+//ES5
+var ages = [10, 20, 30, 25];
+var sum2 = sum.apply(null, ages);//this turns sum arguments in array
+console.log(sum2);
+
+//ES6
+const sum3 = sum(...ages);//this pass all content of ages array as arguments to sum function
+console.log(sum3);
+
+//joinning arrays
+const familyBezerra = ['Leo', 'Di', 'Bete', 'Diana', 'Bernardo', 'Renata'];
+const familyMartins = ['Rapha', 'Fio', 'Edson', 'Ale'];
+const bigFamily = [...familyBezerra, ...familyMartins]; //you can insert an element in this expression: const bigFamily = [...familyBezerra, 'DUNHA' ,...familyMartins];
+console.log(bigFamily);
+
+const h = document.querySelector('h1');
+const boxes = document.querySelectorAll('.box');
+const all = [h, ...boxes];
+
+Array.from(all).forEach(cur => cur.style.color = 'purple'); //turns all text on purple
