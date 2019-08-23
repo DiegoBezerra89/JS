@@ -349,8 +349,16 @@ console.log(ages.findIndex(cur => cur >= 18));//3 this find where on the array t
 console.log(ages.find(cur => cur >= 18));//23 this finds the content of where on the array the condition is true
 */
 
+/*
+=======================
 
-//passing an array as argument to a fubction
+    SPREAD OPERATOR ...
+
+=======================
+Takes an array and basicaly transform this array into single values
+It's used in a function call or in a var declaration
+
+//passing an array as argument to a function
 function sum (a, b , c, d) {
     return a + b + c + d;
 }
@@ -377,3 +385,81 @@ const boxes = document.querySelectorAll('.box');
 const all = [h, ...boxes];
 
 Array.from(all).forEach(cur => cur.style.color = 'purple'); //turns all text on purple
+*/
+
+/*
+========================
+
+    REST PARAMETERS
+
+========================
+Receive a couple of single values, and transforms them into an array when we call a function with multiple parameters
+It's used in a function declaration
+
+
+//ES5
+function isFullAge() {
+    var argsArr = Array.prototype.slice.call(arguments);
+
+    argsArr.forEach( function(cur) {
+        console.log((2019 - cur) >= 18);
+    });
+}
+//isFullAge(1990, 2019, 2001, 2008);
+
+
+//ES6
+function isFullAge6(...years) {
+    years.forEach(cur => console.log(2019 - cur >= 18));
+};
+isFullAge6(1999, 2018, 1989, 2015);
+
+
+function isFullAge6(limit, ...years) { // vc pode inserir quantos parametros quiser, o rest irá pegar o resto deles e formar um array
+    years.forEach(cur => console.log(2019 - cur >= limit));
+}; 
+
+isFullAge6(16, 1999, 2018, 1989, 2015);
+*/
+
+/* 
+==========================
+    DEFAULT PARAMETERS
+==========================
+
+
+//ES5 "Default Parameters"
+function SmithPerson(firtsName, yearOfBirth, lastName, nationality) {
+    lastName === undefined ? lastName = 'Bezerra' : lastName = lastName;
+    nationality === undefined ? nationality = 'Brasileiro': nationality = nationality;
+    
+    this.firtsName = firtsName;
+    this.lastName = lastName;
+    this.yearOfBirth = yearOfBirth;
+    this.nationality = nationality;
+};
+
+var john = new SmithPerson('John', 1989);
+console.log(john);
+var emily = new SmithPerson('Emily', 1998, 'Diaz', 'Spanish');
+console.log(emily); //this overwriten the default parameters
+
+
+
+//ES6
+function SmithPerson2(firtsName, yearOfBirth, lastName = 'Bezerra', nationality = 'Brasileiro') { //this way you can define the default parameters values in ES6
+    
+    this.firtsName = firtsName;
+    this.lastName = lastName;
+    this.yearOfBirth = yearOfBirth;
+    this.nationality = nationality;
+
+};
+
+var john2 = new SmithPerson('John', 1989, 'Smith', 'american');
+var diego = new SmithPerson2 ('Diego', 1989);
+console.log(diego);
+console.log(john2);
+
+*/
+
