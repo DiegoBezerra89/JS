@@ -278,8 +278,8 @@ console.log(retirement);
 
 */
 
-/*
 
+/*
 ============================
            ARRAYS
 ============================
@@ -288,7 +288,7 @@ console.log(retirement);
 
 //ES5
 const boxes = document.querySelectorAll('.box'); // this creates a node list
-
+console.log(boxes);
 //converting this node list to an array
 
 
@@ -300,10 +300,14 @@ boxArr5.forEach(function(cur){
 });
 */
 
+
 //ES6
 //this convert a nodelist in an array
+//const boxes = document.querySelectorAll('.box');
+//console.log(boxes);
 //Array.from(boxes).forEach(cur => cur.style.backgroundColor = 'dodgerblue');
-
+//const boxes2 = Array.from(boxes);
+//console.log(boxes2);
 
 //====================
 //For loop in arrays
@@ -462,4 +466,48 @@ console.log(diego);
 console.log(john2);
 
 */
+
+/*
+===========================
+
+            MAPS
+
+===========================
+*/
+
+const question = new Map();
+
+question.set('question', 'Is Javascript the best programming language in the game?');//set a value to the Map
+question.set(1, 'I dont know');
+question.set(2, 'Maybe');
+question.set(3, 'No doubt about it');
+question.set(4, 'No');
+question.set('correct', 3);
+question.set(true, 'Correct answer!');
+question.set(false, 'Wrong answer!');
+
+console.log(question.get('question'));//get a value from the Map
+console.log(question.size);
+
+if(question.has(4)){//has the propertie on the Map? this returns boollean value
+    //question.delete(4);//Delete a propertie from the map
+}
+console.log(question);
+
+//question.clear();//delete all itens from the Map
+
+
+question.forEach((value, key) => {
+    console.log(`"${key}" : ${value}`);
+});
+
+for(let [key, value] of question.entries()){
+    if(typeof(key) === 'number'){
+        console.log(`Answer ${key}: ${value}`);
+    }
+}
+
+const ans = parseInt(prompt(`${question.get('question')}\nDigite a resposta certa:\n`));
+console.log(question.get(ans === question.get('correct')));
+
 
