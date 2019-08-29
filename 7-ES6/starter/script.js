@@ -621,7 +621,7 @@ HINT: Use some of the ES6 features: classes, subclasses, template strings, defau
 //3 parks         
 //4 streets
 //both has name and build year
-
+/*
 class Element {
     constructor(name, buildyear) {
         this.name = name;
@@ -662,7 +662,7 @@ class Street extends Element {
 }
 
 const allParks = [
-    new Park('Central park', 1907, 20000, 2100),
+    new Park('Central park', 1907, 20000, 2100),    
     new Park('Água Branca', 1935, 15000, 900),
     new Park('Jurassic Park', 1995, 45000, 31000)
 ]
@@ -708,3 +708,14 @@ function reportStreets(s) {
 reportParks(allParks);
 reportStreets(allStreets);
 //Total and average length of the town's streets
+*/
+let j;
+for( j = 0; j < 10; j ++) {
+    print();
+}
+
+function print(){
+    setTimeout(()=>{
+        console.log(j);
+    },1000);
+}

@@ -634,7 +634,7 @@ HINT: Use some of the ES6 features: classes, subclasses, template strings, defau
 
 */
 
-
+/*
 class Element {
     constructor(name, buildYear) {
         this.name = name;
@@ -728,3 +728,10 @@ function reportStreets(s) {
 
 reportParks(allParks);
 reportStreets(allStreets);
+*/
+
+for(let i = 1; i < 11; i++){
+    setTimeout(()=>{
+        console.log(i);
+    },1000)
+}
