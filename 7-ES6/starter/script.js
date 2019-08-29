@@ -473,7 +473,7 @@ console.log(john2);
             MAPS
 
 ===========================
-*/
+
 
 const question = new Map();
 
@@ -509,5 +509,85 @@ for(let [key, value] of question.entries()){
 
 const ans = parseInt(prompt(`${question.get('question')}\nDigite a resposta certa:\n`));
 console.log(question.get(ans === question.get('correct')));
+*/
+
+/*
+===========================
+        CLASS
+===========================
 
 
+
+
+//ES5
+const Person5 = function(name, yearOfBirth, job) {
+    this.name = name;
+    this.yearOfBirth = yearOfBirth;
+    this.job = job
+};
+
+Person5.prototype.calculateAge1 = function() {
+    var age = new Date().getFullYear() - this.yearOfBirth;
+    console.log(age);
+}
+
+var john5 = new Person5 ('John', 1998, 'Designer');
+//console.log(john5);
+john5.calculateAge1();
+
+//ES6
+//class definitions aren't hoisted, we need to declare before use it.
+class Person6 {
+    constructor (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+
+    calculateAge2() {
+        let age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+}
+
+let john6 = new Person6('Diego', 1989, 'Web developer');
+john6.calculateAge2();
+let age = new Date().getFullYear();
+*/
+
+
+//=======================
+//Sub Classes
+//=======================
+class Person6 {
+    constructor (name, yearOfBirth, job) {
+        this.name = name;
+        this.yearOfBirth = yearOfBirth;
+        this.job = job;
+    }
+
+    calculateAge2() {
+        let age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+}
+
+class Athlete extends Person6 {
+    constructor(name, yearOfBirth, job, olympicGames, medals){
+        super(name, yearOfBirth, job);
+        this.olympicGames = olympicGames;
+        this.medals = medals;
+    }
+
+    wonMedal() {
+        this.medals++;
+        console.log(this.medals);
+    }
+}
+
+const diego = new Athlete('Diego', 1989, 'Swimmer', 'Tokyo', 12);
+const renata = new Person6('Renata', 1996, 'Developer');
+
+diego.wonMedal();
+diego.calculateAge2(); //subclasses inherit the superclasses methods
+renata.wonMedal();//superclasses don't inherit subclasses methods (obviously)
