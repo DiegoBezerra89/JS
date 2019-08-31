@@ -709,13 +709,3 @@ reportParks(allParks);
 reportStreets(allStreets);
 //Total and average length of the town's streets
 */
-let j;
-for( j = 0; j < 10; j ++) {
-    print();
-}
-
-function print(){
-    setTimeout(()=>{
-        console.log(j);
-    },1000);
-}

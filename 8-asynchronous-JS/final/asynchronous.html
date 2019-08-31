@@ -43,57 +43,57 @@
         // }
         // getRecipe();
 
-        // const getIDs = new Promise((resolve, reject) => {
-        //     setTimeout(() => {
-        //         resolve([523, 883, 432, 974]);
-        //     }, 1500);
-        // });
+        const getIDs = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve([523, 883, 432, 974]);
+            }, 1500);
+        });
 
-        // const getRecipe = recID => {
-        //     return new Promise((resolve, reject) => {
-        //         setTimeout(ID => {
-        //             const recipe = {title: 'Fresh tomato pasta', publisher: 'Jonas'};
-        //             resolve(`${ID}: ${recipe.title}`);
-        //         }, 1500, recID);
-        //     });
-        // };
+        const getRecipe = recID  => { //ID[2] = 432
+            return new Promise((resolve, reject) => {
+                setTimeout(ID => {
+                    const recipe = {title: 'Fresh tomato pasta', publisher: 'Jonas'};
+                    resolve(`${ID}: ${recipe.title}`);//432: Fresh Tomato Pasta
+                }, 1500, recID); //ID[2] = 432
+            });
+        };
 
-        // const getRelated = publisher => {
-        //     return new Promise((resolve, reject) => {
-        //         setTimeout(pub => {
-        //             const recipe = {title: 'Italian Pizza', publisher: 'Jonas'};
-        //             resolve(`${pub}: ${recipe.title}`);
-        //         }, 1500, publisher);
-        //     });
-        // };
+        const getRelated = publisher => { //Jonas schmedtmann
+            return new Promise((resolve, reject) => {
+                setTimeout(pub => {
+                    const recipe = {title: 'Italian Pizza', publisher: 'Jonas'};
+                    resolve(`${pub}: ${recipe.title}`);
+                }, 1500, publisher); //Jonas Schmedtmann
+            });
+        };
 
-        // getIDs
-        // .then(IDs => {
-        //     console.log(IDs);
-        //     return getRecipe(IDs[2]);
-        // })
-        // .then(recipe => {
-        //     console.log(recipe);
-        //     return getRelated('Jonas Schmedtmann');
-        // })
-        // .then(recipe => {
-        //     console.log(recipe);
-        // })
-        // .catch(error => {
-        //     console.log('Error!!');
-        // });
+        getIDs
+        .then(IDs => {
+            console.log(IDs);
+            return getRecipe(IDs[2]);
+        })
+        .then(recipe => {
+            console.log(recipe);
+            return getRelated('Jonas Schmedtmann');
+        })
+        .then(recipe => {
+            console.log(recipe);
+        })
+        .catch(error => {
+            console.log('Error!!');
+        });
 
-        // async function getRecipesAW() {
-        //     const IDs = await getIDs;
-        //     console.log(IDs);
-        //     const recipe = await getRecipe(IDs[2]);
-        //     console.log(recipe);
-        //     const related = await getRelated('Jonas Schmedtmann');
-        //     console.log(related);
+        async function getRecipesAW() {
+            const IDs = await getIDs;
+            console.log(IDs);
+            const recipe = await getRecipe(IDs[2]);
+            console.log(recipe);
+            const related = await getRelated('Jonas Schmedtmann');
+            console.log(related);
 
-        //     return recipe;
-        // }
-        // getRecipesAW().then(result => console.log(`${result} is the best ever!`));
+            return recipe;
+        }
+        getRecipesAW().then(result => console.log(`${result} is the best ever!`));
 
         function getWeather(woeid) {
             fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`)

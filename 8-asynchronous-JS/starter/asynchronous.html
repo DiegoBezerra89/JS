@@ -10,6 +10,18 @@
     <h1>Asynchronous JavaScript</h1>
     <script>
         
+        const arr = [345, 464, 342, 123, 567];
+        const arrPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(arr);
+            }, 3000);
+            
+        });
+
+        arrPromise.then(ok => {
+            console.log(ok);
+        });
+
     </script>
 </body>
 </html>
