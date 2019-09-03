@@ -43,6 +43,7 @@
         // }
         // getRecipe();
 
+        //create promises
         const getIDs = new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve([523, 883, 432, 974]);
@@ -67,6 +68,7 @@
             });
         };
 
+        //consume promises
         getIDs
         .then(IDs => {
             console.log(IDs);
@@ -93,6 +95,7 @@
 
             return recipe;
         }
+        
         getRecipesAW().then(result => console.log(`${result} is the best ever!`));
 
         function getWeather(woeid) {

@@ -36,7 +36,7 @@
                 }, 1500, publisher);
             });
         }
-
+        
         getIds
         .then(Ids => {
             console.log(Id);
@@ -49,9 +49,22 @@
         .then(publisher => {
             console.log(publisher);
         });
+        
+        
+        async function getRecipesAW() {
+            const IDs = await getIds;
+            console.log(IDs);
+            const recipe = await getRecipe(IDs[2]);
+            console.log(recipe);
+            const related = await getRelated('Jonas Schmedtmann');
+            console.log(related);
+
+            return recipe;
+        }
+        
+        getRecipesAW().then(result => console.log(`${result} is the best ever!`));
         */
-        
-        
+
         
     </script>
 </body>
